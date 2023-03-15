@@ -9,13 +9,10 @@ export const utilService = {
   getRandomItemFromArr,
   toggleElement,
   formatMonthYear,
-  guestsCountFormatted,
-  getQueryParams,
-  isObjectEmpty,
-  isToday,
+
 }
 
-export function makeId(length: number = 6): string {
+function makeId(length = 6) {
   var txt = ""
   var possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -27,17 +24,17 @@ export function makeId(length: number = 6): string {
   return txt
 }
 
-function capitalize(string: string): string {
+function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1).toLowerCase()
 }
 
-function getRandomIntInclusive(min: number, max: number): number {
+function getRandomIntInclusive(min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive
 }
 
-function randomPastTime(): number {
+function randomPastTime() {
   const HOUR = 1000 * 60 * 60
   const WEEK = 1000 * 60 * 60 * 24 * 7
 
@@ -45,16 +42,16 @@ function randomPastTime(): number {
   return Date.now() - pastTime
 }
 
-function saveToStorage(key: string, value: any): void {
+function saveToStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value))
 }
 
-function loadFromStorage(key: string): any {
+function loadFromStorage(key) {
   const data = localStorage.getItem(key)
   return data ? JSON.parse(data) : undefined
 }
 
-function formatTimeAgo(sentAt: number): string {
+function formatTimeAgo(sentAt) {
   const timestamp = Date.now()
   const seconds = Math.floor(timestamp / 1000)
   const oldTimestamp = Math.floor(sentAt / 1000)
@@ -84,51 +81,25 @@ function formatTimeAgo(sentAt: number): string {
   return `${output}`
 }
 
-function getRandomItemFromArr(arr: any[]) {
+function getRandomItemFromArr(arr) {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
-function toggleElement(arr: any[], val: any): any[] {
+function toggleElement(arr, val) {
   return arr.includes(val) ? arr.filter((el) => el !== val) : [...arr, val]
 }
 
-function formatMonthYear(timestamp: Date) {
+function formatMonthYear(timestamp) {
   const date = new Date(timestamp)
   const month = date.toLocaleString("default", { month: "long" })
   const year = date.getFullYear()
   return `${month} ${year}`
 }
 
-function guestsCountFormatted(searchBy) {
-  const guestsCount =
-    searchBy.adults + searchBy.children + searchBy.infants + searchBy.pets
-  if (guestsCount === 0) return ""
-  if (guestsCount === 1) return "1 guest"
-  else return `${guestsCount} guests`
-}
+// function guestsCountFormatted(searchBy) {
+//   const guestsCount =
+//     searchBy.adults + searchBy.children + searchBy.infants + searchBy.pets
+//   if (guestsCount === 0) return ""
+//   if (guestsCount === 1) return "
 
-function getQueryParams(url = null) {
-  const paramsObj = new URLSearchParams(url ? url : window.location.search)
-  let newObj: any = {}
-  for (const [key, value] of paramsObj) {
-    newObj[snakeToCamel(key)] = value
-  }
-  return newObj
-}
-
-function isObjectEmpty(obj: any) {
-  return Object.keys(obj).length === 0
-}
-
-function snakeToCamel(s: string): string {
-  return s.replace(/([-_]\w)/g, (g) => g[1].toUpperCase())
-}
-
-function isToday(date: Date): boolean {
-  const today = new Date()
-  return (
-    date.getDate() === today.getDate() &&
-    date.getMonth() === today.getMonth() &&
-    date.getFullYear() === today.getFullYear()
-  )
-}
+// }

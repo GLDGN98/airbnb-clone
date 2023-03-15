@@ -5,6 +5,7 @@ import { Carousel } from "react-responsive-carousel"
 
 export default function ImgCarousel({ imgUrls }) {
   const [imgIndex, setImgIndex] = useState(0)
+
   function onNextImage(ev, inc) {
     ev.stopPropagation()
     setImgIndex((prevImgIndex) => prevImgIndex + inc)
@@ -16,6 +17,7 @@ export default function ImgCarousel({ imgUrls }) {
     showThumbs: false,
     showIndicators: false,
     selectedItem: imgIndex,
+    
   }
 
   return (
@@ -31,7 +33,7 @@ export default function ImgCarousel({ imgUrls }) {
 
       <Carousel {...carouselSettings}>
         {imgUrls.map((imgUrl, idx) => {
-          return <img src={imgUrl} className="stay-img" alt="" key={idx} />
+          return <img  src={imgUrl} className="stay-img" alt="" key={idx} />
         })}
       </Carousel>
       {imgIndex < imgUrls.length - 1 && (
