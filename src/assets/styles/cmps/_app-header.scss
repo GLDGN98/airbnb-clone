@@ -1,53 +1,29 @@
 .app-header {
-    background-color: $clr4;
-    padding: 10px;
+    .filter-list {
 
+        display: flex;
+        align-items: center;
 
-    .user-info {
-        // background-color: $clr2;
-        // padding: 2px 8px;
-        padding-left: 100px;
-        color: $clr1;
+        .filter-preview {
 
-        .score {
-            background-color: $clr2;
-            color: $clr6;
-            padding: 8px;
-            margin: 10px;
-            border-radius: 50%;
+            color: #717171;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5em;
+            min-width: 95px;
+
+            span {
+                font-family: Cereal-Medium;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            img {
+                opacity: 0.6425339366515838;
+                width: em(24px);
+            }
         }
-
-        img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-    }
-
-    .user-info .btn-link {
-        color: $clr2;
-    }
-
-    nav {
-        font-size: .8em;
-        background-color: $clr5;
-        padding: 5px;
-
-    }
-
-    nav a:first-child {
-        margin-right: 30px;
-    }
-
-    nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
-        padding: 0 5px;
-        margin: 10px;
-    }
-
-    nav .active {
-        color: $clr1;
     }
 
 }

@@ -1,5 +1,10 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { Filters } from "./filters"
 
 export const AppHeader = () => {
-  return <div>AppHeader</div>
+  return (
+    <div className="app-header">
+      <Filters />
+    </div>
+  )
 }

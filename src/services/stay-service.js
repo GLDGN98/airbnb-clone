@@ -1,9 +1,8 @@
 import { asyncStorageService } from "./async-storage.service.js"
-import { storageService } from "./storage-service.js"
-import {utilService} from './util.service.js';
-import filterNames from '../data/filter-names.json'
-import destinations from '../data/destinations.json'
-
+import filters from "../data/filters.json"
+import { utilService } from "./util.service.js"
+import filterNames from "../data/filter-names.json"
+import destinations from "../data/destinations.json"
 
 import originalStays from "../data/stays.json"
 
@@ -12,7 +11,6 @@ const STORAGE_KEY = "staysDB"
 _createStays()
 const stayIndexIncrement = 20
 
-
 export const stayService = {
   query,
   getById,
@@ -20,7 +18,8 @@ export const stayService = {
   remove,
   formatDateRange,
   getStayRating,
-  getStays
+  getStays,
+  getFilters
 }
 window.cs = stayService
 
@@ -32,12 +31,13 @@ async function query(filterBy = { txt: "", price: 0 }) {
 
 function getStayRating(stay) {
   return (
-      stay?.reviews?.reduce((acc, review) => {
-          const values = Object.values(review.moreRate)
-          const average = values.reduce((sum, value) => sum + value, 0) / values.length
+    stay?.reviews?.reduce((acc, review) => {
+      const values = Object.values(review.moreRate)
+      const average =
+        values.reduce((sum, value) => sum + value, 0) / values.length
 
-          return acc + average
-      }, 0) / stay.reviews.length
+      return acc + average
+    }, 0) / stay.reviews.length
   )
 }
 
@@ -46,45 +46,57 @@ function getById(stayId) {
   // return httpService.get(`stay/${stayId}`)
 }
 
+function getFilters() {
+  return filters
+}
+
 async function remove(stayId) {
   await asyncStorageService.remove(STORAGE_KEY, stayId)
   // return httpService.delete(`stay/${stayId}`)
 }
 
-
 async function getStays(idx = 0) {
   try {
-      const stays = await query()
-      return stays.slice(stayIndexIncrement * idx, stayIndexIncrement * idx + stayIndexIncrement)
+    const stays = await query()
+    return stays.slice(
+      stayIndexIncrement * idx,
+      stayIndexIncrement * idx + stayIndexIncrement
+    )
   } catch (err) {
-      throw err
+    throw err
   }
 }
 
 function getEmptyFilterBy() {
   return {
-      selectedFilter: '',
-      minPrice: 20,
-      maxPrice: 1000,
-      types: [],
+    selectedFilter: "",
+    minPrice: 20,
+    maxPrice: 1000,
+    types: [],
   }
 }
 
 function _filterStays(stays, filterBy) {
   let filteredStays = stays
   if (filterBy.selectedFilter) {
-      filteredStays = filteredStays.filter(stay => stay.filters.includes(filterBy.selectedFilter))
+    filteredStays = filteredStays.filter((stay) =>
+      stay.filters.includes(filterBy.selectedFilter)
+    )
   }
   if (filterBy.minPrice > 0) {
-      filteredStays = filteredStays.filter(stay => stay.price > filterBy.minPrice)
+    filteredStays = filteredStays.filter(
+      (stay) => stay.price > filterBy.minPrice
+    )
   }
   if (filterBy.maxPrice) {
-      filteredStays = filteredStays.filter(stay => stay.price < filterBy.maxPrice)
+    filteredStays = filteredStays.filter(
+      (stay) => stay.price < filterBy.maxPrice
+    )
   }
   if (filterBy.types.length) {
-      filteredStays = filteredStays.filter(stay => {
-          return filterBy.types.includes(stay.type)
-      })
+    filteredStays = filteredStays.filter((stay) => {
+      return filterBy.types.includes(stay.type)
+    })
   }
   return filteredStays
 }
@@ -121,33 +133,30 @@ function generateRandomDateRange() {
 function _createStays() {
   const stays = utilService.loadFromStorage(STORAGE_KEY)
   if (!stays || !stays.length) {
-      let stays = _makeStays()
-      utilService.saveToStorage(STORAGE_KEY, stays)
+    let stays = _makeStays()
+    utilService.saveToStorage(STORAGE_KEY, stays)
   }
 }
-
 
 function _makeStays() {
   let stays = originalStays
   stays.sort(() => Math.random() - 0.5)
   stays = stays.map((stay) => {
-      stay._id = utilService.makeId()
-      stay.filters = [
-          utilService.getRandomItemFromArr(filterNames),
-          utilService.getRandomItemFromArr(filterNames),
-          utilService.getRandomItemFromArr(filterNames),
-          utilService.getRandomItemFromArr(filterNames),
-          utilService.getRandomItemFromArr(filterNames),
-          utilService.getRandomItemFromArr(filterNames),
-          utilService.getRandomItemFromArr(filterNames),
-          utilService.getRandomItemFromArr(filterNames),
-      ]
-      stay.loc.destination = utilService.getRandomItemFromArr(destinations)
-      stay.takenDates = []
-      stay.datesForPreview = generateRandomDateRange()
-      return stay
+    stay._id = utilService.makeId()
+    stay.filters = [
+      utilService.getRandomItemFromArr(filterNames),
+      utilService.getRandomItemFromArr(filterNames),
+      utilService.getRandomItemFromArr(filterNames),
+      utilService.getRandomItemFromArr(filterNames),
+      utilService.getRandomItemFromArr(filterNames),
+      utilService.getRandomItemFromArr(filterNames),
+      utilService.getRandomItemFromArr(filterNames),
+      utilService.getRandomItemFromArr(filterNames),
+    ]
+    stay.loc.destination = utilService.getRandomItemFromArr(destinations)
+    stay.takenDates = []
+    stay.datesForPreview = generateRandomDateRange()
+    return stay
   })
   return stays
 }
-
-
