@@ -11,6 +11,9 @@
     .details {
         color: #717171;
         font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25em;
 
         .row {
             display: flex;

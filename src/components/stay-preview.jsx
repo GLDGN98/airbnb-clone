@@ -8,6 +8,7 @@ export const StayPreview = ({ stay }) => {
     // reducing it and dividing by total reviews length
     const rating = stayService.getStayRating(stay)
 
+
   return (
     <article
       className="stay-preview"
