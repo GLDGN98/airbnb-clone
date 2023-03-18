@@ -96,10 +96,3 @@ function formatMonthYear(timestamp) {
   return `${month} ${year}`
 }
 
-// function guestsCountFormatted(searchBy) {
-//   const guestsCount =
-//     searchBy.adults + searchBy.children + searchBy.infants + searchBy.pets
-//   if (guestsCount === 0) return ""
-//   if (guestsCount === 1) return "
-
-// }
