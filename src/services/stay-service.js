@@ -52,11 +52,10 @@ async function remove(stayId) {
 }
 
 
-async function getStays(idx = 0, filterBy = getEmptyFilterBy(), searchBy) {
+async function getStays(idx = 0) {
   try {
       const stays = await query()
-      const filteredStays = _filterStays(stays, filterBy)
-      return filteredStays.slice(stayIndexIncrement * idx, stayIndexIncrement * idx + stayIndexIncrement)
+      return stays.slice(stayIndexIncrement * idx, stayIndexIncrement * idx + stayIndexIncrement)
   } catch (err) {
       throw err
   }
