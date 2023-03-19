@@ -12,8 +12,8 @@
 @import "basics/forms";
 
 
-// // Views
-// @import "views/about-us";
+// Pages
+@import "views/stay-index";
 // @import "views/home-page";
 // @import "views/car-app";
 // @import "views/review-app";
@@ -25,6 +25,7 @@
 @import "cmps/stay-preview";
 @import "cmps/skeleton-preview";
 @import "cmps/app-header";
-// @import "cmps/app-footer";
+@import "cmps/filters";
+@import "cmps/filter";
 // @import "cmps/user-msg";
 // @import "cmps/shopping-cart";

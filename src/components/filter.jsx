@@ -1,10 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 
-export const Filter = ({ filter }) => {
+export const Filter = ({ filter, onSelectFilter }) => {
   return (
-    <li className="filter-preview">
-      <img src={filter.img} alt={filter.filter} />
-      <span>{filter.filter}</span>
-    </li>
+    <>
+      <li
+        onClick={() => onSelectFilter(filter)}
+        key={filter.filter}
+        className="filter-preview"
+      >
+        <img src={filter.img} alt={filter.filter} />
+        <span>{filter.filter}</span>
+      </li>
+    </>
   )
 }
