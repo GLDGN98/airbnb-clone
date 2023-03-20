@@ -26,6 +26,9 @@
     &:hover {
         border-bottom: 2px solid #dddddd;
         color: black;
+        img {
+            opacity: 1;
+        }
 
     }
 
@@ -37,6 +40,6 @@
 
     img {
         opacity: 0.6425339366515838;
-        width: em(24px);
+        width: em(32px);
     }
 }

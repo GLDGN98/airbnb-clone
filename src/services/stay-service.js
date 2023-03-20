@@ -19,12 +19,14 @@ export const stayService = {
   formatDateRange,
   getStayRating,
   getStays,
-  getFilters
+  getFilters,
+  getEmptyFilterBy,
 }
 window.cs = stayService
 
-async function query(filterBy = { txt: "", price: 0 }) {
-  return await asyncStorageService.query(STORAGE_KEY)
+async function query() {
+  let stays = await asyncStorageService.query(STORAGE_KEY)
+  return stays
 
   // return httpService.get(STORAGE_KEY, filterBy)
 }
@@ -55,10 +57,18 @@ async function remove(stayId) {
   // return httpService.delete(`stay/${stayId}`)
 }
 
-async function getStays(idx = 0) {
+// filteredStays.filter((stay) => stay.filters.includes(filterBy.selectedFilter))
+
+async function getStays(idx = 0, filterBy = { selectedFilter: "" }) {
   try {
     const stays = await query()
-    return stays.slice(
+    let filteredStays = stays
+    if (filterBy.selectedFilter) {
+      return filteredStays.filter((stay) => {
+        return stay.filters.includes(filterBy.selectedFilter)
+      })
+    }
+    return filteredStays.slice(
       stayIndexIncrement * idx,
       stayIndexIncrement * idx + stayIndexIncrement
     )

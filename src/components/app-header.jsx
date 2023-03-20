@@ -4,7 +4,6 @@ import { Filters } from "./filters"
 export const AppHeader = () => {
   return (
     <div className="app-header">
-      <Filters />
     </div>
   )
 }

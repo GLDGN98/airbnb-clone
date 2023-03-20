@@ -1,16 +1,18 @@
-import React, { useState } from "react"
+import React from "react"
 
-export const Filter = ({ filter, onSelectFilter }) => {
+export const Filter = ({ filter, onSelectFilter, selectedFilter }) => {
+  const isSelected = filter.filter === selectedFilter
+
+  console.log(selectedFilter);
+
   return (
-    <>
-      <li
-        onClick={() => onSelectFilter(filter)}
-        key={filter.filter}
-        className="filter-preview"
-      >
-        <img src={filter.img} alt={filter.filter} />
-        <span>{filter.filter}</span>
-      </li>
-    </>
+    <li
+      onClick={() => onSelectFilter(filter.filter)}
+      key={filter.filter}
+      className={`filter-preview ${isSelected ? 'selected' : ''}`}
+    >
+      <img src={filter.img} alt={filter.filter} />
+      <span>{filter.filter}</span>
+    </li>
   )
 }

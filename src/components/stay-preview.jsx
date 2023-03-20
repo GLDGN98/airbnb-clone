@@ -4,13 +4,13 @@ import { stayService } from "../services/stay-service"
 import ImgCarousel from "./ImgCarousel"
 
 export const StayPreview = ({ stay }) => {
-    // getting the rating for the stay by going over the arr of reviews
-    // reducing it and dividing by total reviews length
-    const rating = stayService.getStayRating(stay)
-
+  // getting the rating for the stay by going over the arr of reviews
+  // reducing it and dividing by total reviews length
+  const rating = stayService.getStayRating(stay)
 
   return (
     <article
+      onClick={() => console.log(stay.filters)}
       className="stay-preview"
       // onClick={() => onStay(stay._id, stay.datesForPreview[0], stay.datesForPreview[1])}
     >
