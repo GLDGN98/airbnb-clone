@@ -2,12 +2,16 @@ import React, { useState, useRef } from "react"
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi"
 import { stayService } from "../services/stay-service"
 import { Filter } from "./filter"
+import { ModalFilters } from "./modal-filters"
+const moreFiltersIconSrc =
+  "https://res.cloudinary.com/yaronshapira-com/image/upload/v1676833536/Airbnb/temp_dc7cvq.svg"
 
 const filters = stayService.getFilters()
 
 export const Filters = ({ setFilterBy, filterBy, loadNewStays }) => {
   const [leftIsFullyScrolled, setLeftIsFullyScrolled] = useState(true)
   const [rightIsFullyScrolled, setRightIsFullyScrolled] = useState(false)
+  const [filtersModalOpen, setFiltersModalOpen] = useState(false)
   const filterListRef = useRef(null)
 
   function handleScrollFilters(direction) {
@@ -74,15 +78,31 @@ export const Filters = ({ setFilterBy, filterBy, loadNewStays }) => {
             <BiChevronLeft fontSize={"1.2rem"} />
           </button>
         )}
-        {!rightIsFullyScrolled && (
+        <div className="btns">
+          {!rightIsFullyScrolled && (
+            <button
+              className="btn-scroll-right"
+              onClick={() => handleScrollFilters(1)}
+            >
+              <BiChevronRight fontSize={"1.2rem"} />
+            </button>
+          )}
           <button
-            className="btn-scroll-right"
-            onClick={() => handleScrollFilters(1)}
+            onClick={() => setFiltersModalOpen(true)}
+            className="more-filters"
           >
-            <BiChevronRight fontSize={"1.2rem"} />
+            <img src={moreFiltersIconSrc} alt="" />
+            <p>Filters</p>
           </button>
-        )}
+        </div>
       </div>
+      {filtersModalOpen && (
+        <ModalFilters
+          setFilterBy={setFilterBy}
+          filterBy={filterBy}
+          setFiltersModalOpen={setFiltersModalOpen}
+        />
+      )}
     </div>
   )
 }
