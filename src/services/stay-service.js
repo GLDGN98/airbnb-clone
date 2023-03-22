@@ -62,16 +62,12 @@ async function remove(stayId) {
 async function getStays(idx = 0, filterBy = { selectedFilter: "" }) {
   try {
     const stays = await query()
-    let filteredStays = stays
-    if (filterBy.selectedFilter) {
-      return filteredStays.filter((stay) => {
-        return stay.filters.includes(filterBy.selectedFilter)
-      })
-    }
+    const filteredStays = _filterStays(stays, filterBy)
     return filteredStays.slice(
       stayIndexIncrement * idx,
       stayIndexIncrement * idx + stayIndexIncrement
     )
+    // return filteredStays
   } catch (err) {
     throw err
   }
@@ -83,6 +79,7 @@ function getEmptyFilterBy() {
     minPrice: 20,
     maxPrice: 1000,
     types: [],
+    stayDetails: { bathrooms: "", bedrooms: "", beds: "", guests: "" },
   }
 }
 
@@ -94,6 +91,7 @@ function _filterStays(stays, filterBy) {
     )
   }
   if (filterBy.minPrice > 0) {
+    console.log(filteredStays)
     filteredStays = filteredStays.filter(
       (stay) => stay.price > filterBy.minPrice
     )
@@ -107,6 +105,23 @@ function _filterStays(stays, filterBy) {
     filteredStays = filteredStays.filter((stay) => {
       return filterBy.types.includes(stay.type)
     })
+  }
+  if (filterBy.stayDetails) {
+    if (filterBy.stayDetails.bathrooms) {
+      filteredStays = filteredStays.filter((stay) => {
+        return stay.stayDetails.bathrooms === filterBy.stayDetails.bathrooms
+      })
+    }
+    if (filterBy.stayDetails.beds) {
+      filteredStays = filteredStays.filter((stay) => {
+        return stay.stayDetails.beds === filterBy.stayDetails.beds
+      })
+    }
+    if (filterBy.stayDetails.bedrooms) {
+      filteredStays = filteredStays.filter((stay) => {
+        return stay.stayDetails.bedrooms === filterBy.stayDetails.bedrooms
+      })
+    }
   }
   return filteredStays
 }

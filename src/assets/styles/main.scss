@@ -28,5 +28,11 @@
 @import "cmps/filters";
 @import "cmps/filter";
 @import "cmps/modal-filters";
-// @import "cmps/user-msg";
-// @import "cmps/shopping-cart";
+
+
+// Modal Filter Cmps
+
+@import 'cmps/modal-filters/place-filter';
+@import 'cmps/modal-filters/price-filter';
+@import 'cmps/modal-filters/room-bads-filter';
+@import 'cmps/modal-filters/room-bads-cmp/room-bads-quantity';

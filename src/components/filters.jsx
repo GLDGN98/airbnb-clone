@@ -57,6 +57,16 @@ export const Filters = ({ setFilterBy, filterBy, loadNewStays }) => {
     }
   }
 
+  function handleModalFilter() {
+    loadNewStays()
+    setFiltersModalOpen(false)
+  }
+
+  function handleOpenFilterModal() {
+    // setFilterBy(stayService.getEmptyFilterBy())
+    setFiltersModalOpen(true)
+  }
+
   return (
     <div className="filter-list-wrapper">
       <ul className="filter-list" ref={filterListRef} onScroll={handleScroll}>
@@ -87,10 +97,7 @@ export const Filters = ({ setFilterBy, filterBy, loadNewStays }) => {
               <BiChevronRight fontSize={"1.2rem"} />
             </button>
           )}
-          <button
-            onClick={() => setFiltersModalOpen(true)}
-            className="more-filters"
-          >
+          <button onClick={handleOpenFilterModal} className="more-filters">
             <img src={moreFiltersIconSrc} alt="" />
             <p>Filters</p>
           </button>
@@ -101,6 +108,7 @@ export const Filters = ({ setFilterBy, filterBy, loadNewStays }) => {
           setFilterBy={setFilterBy}
           filterBy={filterBy}
           setFiltersModalOpen={setFiltersModalOpen}
+          handleModalFilter={handleModalFilter}
         />
       )}
     </div>

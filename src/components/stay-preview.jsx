@@ -10,7 +10,7 @@ export const StayPreview = ({ stay }) => {
 
   return (
     <article
-      onClick={() => console.log(stay.filters)}
+      onClick={() => console.log(stay)}
       className="stay-preview"
       // onClick={() => onStay(stay._id, stay.datesForPreview[0], stay.datesForPreview[1])}
     >

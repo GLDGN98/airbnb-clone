@@ -1,0 +1,17 @@
+.room-bads-filter {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    margin-left: 24px;
+    margin-right: 24px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+
+    h2 {
+        padding-bottom: 1em;
+    }
+
+    .bedrooms,.beds,.bathrooms {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+    }
+}

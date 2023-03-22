@@ -1,0 +1,42 @@
+.place-filter {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    margin-left: 24px;
+    margin-right: 24px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        padding-bottom: 0.3em;
+    }
+
+    .type-of-place {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        label {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+
+            .checkbox-filter-input {
+                align-self: flex-start;
+
+                input {
+                    height: 24px;
+                    width: 24px;
+                }
+
+            }
+
+            p {
+                font-size: 14px;
+                opacity: 0.65;
+            }
+
+        }
+    }
+}

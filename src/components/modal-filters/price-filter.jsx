@@ -1,6 +1,11 @@
 import React from "react"
 
-export const PriceFilter = () => {
+export const PriceFilter = ({ filterBy, setFilterBy }) => {
+  function handleChange({ target }) {
+    let { value, name: field } = target
+    setFilterBy((prev) => ({ ...prev, [field]: +value }))
+  }
+
   return (
     <div className="price-filter">
       <h2>Price range</h2>
@@ -11,10 +16,11 @@ export const PriceFilter = () => {
           <div className="price-wrapper">
             <span className="curr-sign">$</span>
             <input
+              onChange={handleChange}
               id="min-price"
               type="number"
               placeholder="20"
-              name="min-price"
+              name="minPrice"
             />
           </div>
         </label>
@@ -24,10 +30,11 @@ export const PriceFilter = () => {
           <div className="price-wrapper">
             <span className="curr-sign">$</span>
             <input
+              onChange={handleChange}
               id="max-price"
               type="number"
               placeholder="1000"
-              name="max-price"
+              name="maxPrice"
             />
           </div>
         </label>

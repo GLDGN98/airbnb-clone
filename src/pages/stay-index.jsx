@@ -11,13 +11,12 @@ export const StayIndex = () => {
   const [filterBy, setFilterBy] = useState(stayService.getEmptyFilterBy())
   const currentStayPagination = useRef(0)
 
-
   useEffect(() => {
     onGetNewStays()
   }, [])
 
   function onGetNewStays() {
-    // currentStayPagination.current = 0
+    currentStayPagination.current = 0
     stays = []
     setStays(getSkeletonStays())
     loadStays()
@@ -40,14 +39,13 @@ export const StayIndex = () => {
 
     const filteredStays = stays.filter((stay) => stay.name)
     if (!newStays.length) {
-      console.log('fromn that');
       // No new stays so no need for skeletons
       setStays([...filteredStays, ...newStays])
     } else {
-      console.log("from here")
       setStays([...filteredStays, ...newStays, ...getSkeletonStays()])
       currentStayPagination.current++
     }
+    // setFilterBy(stayService.getEmptyFilterBy())
   }
 
   return (

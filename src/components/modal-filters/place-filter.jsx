@@ -1,6 +1,16 @@
 import React from "react"
 
-export const PlaceFilter = () => {
+export const PlaceFilter = ({ filterBy, setFilterBy }) => {
+  function handleChange({ target }) {
+    let { name: field } = target
+    setFilterBy((prev) => ({
+      ...prev,
+      types: filterBy.types.includes(field)
+        ? filterBy.types.filter((type) => type !== field)
+        : [...filterBy.types, field],
+    }))
+  }
+
   return (
     <div className="place-filter">
       <h2>Type of place</h2>
@@ -8,9 +18,10 @@ export const PlaceFilter = () => {
         <label htmlFor="entire-place">
           <div className="checkbox-filter-input">
             <input
+              onChange={handleChange}
               type="checkbox"
               placeholder="A place all to yourself"
-              name="entire-place"
+              name="Entire home/apt"
               id="entire-place"
             />
           </div>
@@ -22,9 +33,10 @@ export const PlaceFilter = () => {
         <label htmlFor="private-room">
           <div className="checkbox-filter-input">
             <input
+              onChange={handleChange}
               type="checkbox"
               placeholder="our own room in a home or a hotel, plus some shared common spaces"
-              name="private-room"
+              name="Private room"
               id="private-room"
             ></input>
           </div>
