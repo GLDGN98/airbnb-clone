@@ -18,6 +18,7 @@ export const PlaceFilter = ({ filterBy, setFilterBy }) => {
         <label htmlFor="entire-place">
           <div className="checkbox-filter-input">
             <input
+              checked={filterBy.types.includes("Entire home/apt")}
               onChange={handleChange}
               type="checkbox"
               placeholder="A place all to yourself"
@@ -33,6 +34,7 @@ export const PlaceFilter = ({ filterBy, setFilterBy }) => {
         <label htmlFor="private-room">
           <div className="checkbox-filter-input">
             <input
+              checked={filterBy.types.includes("Private room")}
               onChange={handleChange}
               type="checkbox"
               placeholder="our own room in a home or a hotel, plus some shared common spaces"

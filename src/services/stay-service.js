@@ -76,10 +76,10 @@ async function getStays(idx = 0, filterBy = { selectedFilter: "" }) {
 function getEmptyFilterBy() {
   return {
     selectedFilter: "",
-    minPrice: 20,
-    maxPrice: 1000,
+    minPrice: "",
+    maxPrice: "",
     types: [],
-    stayDetails: { bathrooms: "", bedrooms: "", beds: "", guests: "" },
+    stayDetails: {},
   }
 }
 
@@ -91,7 +91,6 @@ function _filterStays(stays, filterBy) {
     )
   }
   if (filterBy.minPrice > 0) {
-    console.log(filteredStays)
     filteredStays = filteredStays.filter(
       (stay) => stay.price > filterBy.minPrice
     )

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 export const PriceFilter = ({ filterBy, setFilterBy }) => {
   function handleChange({ target }) {
@@ -16,6 +16,7 @@ export const PriceFilter = ({ filterBy, setFilterBy }) => {
           <div className="price-wrapper">
             <span className="curr-sign">$</span>
             <input
+              value={filterBy.minPrice || ""}
               onChange={handleChange}
               id="min-price"
               type="number"
@@ -30,6 +31,7 @@ export const PriceFilter = ({ filterBy, setFilterBy }) => {
           <div className="price-wrapper">
             <span className="curr-sign">$</span>
             <input
+              value={filterBy.maxPrice || ""}
               onChange={handleChange}
               id="max-price"
               type="number"

@@ -67,6 +67,11 @@ export const Filters = ({ setFilterBy, filterBy, loadNewStays }) => {
     setFiltersModalOpen(true)
   }
 
+  function clearModalFilter() {
+    setFilterBy(stayService.getEmptyFilterBy())
+
+  }
+
   return (
     <div className="filter-list-wrapper">
       <ul className="filter-list" ref={filterListRef} onScroll={handleScroll}>
@@ -105,6 +110,7 @@ export const Filters = ({ setFilterBy, filterBy, loadNewStays }) => {
       </div>
       {filtersModalOpen && (
         <ModalFilters
+          clearModalFilter={clearModalFilter}
           setFilterBy={setFilterBy}
           filterBy={filterBy}
           setFiltersModalOpen={setFiltersModalOpen}

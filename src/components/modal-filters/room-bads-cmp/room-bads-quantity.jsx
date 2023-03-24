@@ -4,7 +4,7 @@ export const RoomBadsQuantity = ({ setFilterBy, filterBy, field }) => {
   const [lastClickedButton, setLastClickedButton] = useState(null)
 
   useEffect(() => {
-    if (!filterBy.stayDetails[field]) {
+    if (typeof filterBy.stayDetails[field] === "undefined") {
       setLastClickedButton(null)
       return
     }
@@ -16,36 +16,45 @@ export const RoomBadsQuantity = ({ setFilterBy, filterBy, field }) => {
         button.style.backgroundColor = "black"
         button.style.color = "white"
         setLastClickedButton(button)
-      } else {
-        button.style.backgroundColor = null
-        button.style.color = null
       }
     })
-  }, [filterBy.stayDetails, field])
+  }, [filterBy, field])
 
-  const handleButtonClick = (event, i) => {
-    if (i === undefined) i = ""
-    // remove the black background color from the previously clicked button
+  function ButtonIsAny(name, btn, index) {
+    if (index === undefined) {
+      btn.style.backgroundColor = "black"
+      btn.style.color = "white"
+      setFilterBy((prev) => ({
+        ...prev,
+        stayDetails: { ...prev.stayDetails, [name]: "" },
+      }))
+    } else {
+      btn.style.backgroundColor = null
+      btn.style.color = null
+    }
+  }
+
+  function handleLastButtonClicked(name, btn, index) {
     if (lastClickedButton !== null) {
       lastClickedButton.style.backgroundColor = null
       lastClickedButton.style.color = null
     }
 
-    // add the black background color to the clicked button
-    const button = event.target
-    button.style.backgroundColor = "black"
-    button.style.color = "white"
+    setLastClickedButton(btn)
 
-    // update the last clicked button state
-    setLastClickedButton(button)
+    if (index) {
+      setFilterBy((prev) => ({
+        ...prev,
+        stayDetails: { ...prev.stayDetails, [name]: index },
+      }))
+    }
+  }
 
+  const handleButtonClick = (event, i) => {
     let { name } = event.target
-
-    setFilterBy((prev) => ({
-      ...prev,
-      stayDetails: { ...prev.stayDetails, [name]: i },
-    }))
-    // handle button click event here
+    const button = event.target
+    ButtonIsAny(name, button, i)
+    handleLastButtonClicked(name, button, i)
   }
 
   const buttons = []
@@ -56,8 +65,16 @@ export const RoomBadsQuantity = ({ setFilterBy, filterBy, field }) => {
       key="any"
       onClick={handleButtonClick}
       style={{
-        backgroundColor: lastClickedButton === null ? "black" : null,
-        color: lastClickedButton === null ? "white" : null,
+        backgroundColor:
+          typeof filterBy.stayDetails[field] === "undefined" &&
+          lastClickedButton === null
+            ? "black"
+            : null,
+        color:
+          typeof filterBy.stayDetails[field] === "undefined" &&
+          lastClickedButton === null
+            ? "white"
+            : null,
       }}
     >
       Any

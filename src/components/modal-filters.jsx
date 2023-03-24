@@ -9,6 +9,7 @@ export const ModalFilters = ({
   filterBy,
   setFilterBy,
   handleModalFilter,
+  clearModalFilter
 }) => {
   return (
     <div className="modal-filters">
@@ -22,7 +23,7 @@ export const ModalFilters = ({
       <PlaceFilter filterBy={filterBy} setFilterBy={setFilterBy} />
       <RoomBadsFilter filterBy={filterBy} setFilterBy={setFilterBy} />
       <div className="footer">
-        <button className="clear">Clear all</button>
+        <button onClick={clearModalFilter} className="clear">Clear all</button>
         <button onClick={handleModalFilter} className="show-homes">
           Show homes
         </button>
