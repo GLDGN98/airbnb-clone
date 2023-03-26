@@ -8,11 +8,20 @@
     justify-content: center;
     align-items: center;
     padding-inline: 0.4em;
+    width: fit-content;
+    margin: auto;
+    gap: 0.2em;
+
+
+    &:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+
 
 
 
     button {
-        padding: 16px;
+        padding: 14px;
         border: none;
         background: none;
         font-family: Cereal-Medium;
@@ -38,7 +47,7 @@
         color: white;
         display: flex;
         align-items: center;
-        padding: 9px;
+        padding: 8px;
         justify-content: center;
 
     }

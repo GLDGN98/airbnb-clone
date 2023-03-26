@@ -51,11 +51,12 @@ export const StayIndex = () => {
 
   return (
     <div className="stay-index">
-      <Filters
-        loadNewStays={onGetNewStays}
-        filterBy={filterBy}
-        setFilterBy={setFilterBy}
-      />
+        <AppHeader />
+        <Filters
+          loadNewStays={onGetNewStays}
+          filterBy={filterBy}
+          setFilterBy={setFilterBy}
+        />
       <StayList stays={stays} loadStays={loadStays} />
     </div>
   )

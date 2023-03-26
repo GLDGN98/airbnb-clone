@@ -1,15 +1,60 @@
-import React from "react"
-import { CgSearch } from "react-icons/cg"
+import React, { useEffect, useRef, useState } from "react"
+import { FaSearch } from "react-icons/fa"
+import { StaySearchExpanded } from "./stay-search-expanded"
 
 export const StaySearch = () => {
+  const [staySearchExpanded, setStaySearchExpanded] = useState(false)
+  const staySearchRef = useRef()
+
+  useEffect(() => {
+    let handleSearch = (e) => {
+      if (!staySearchRef.current.contains(e.target)) {
+        setStaySearchExpanded(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleSearch)
+
+    return () => {
+      document.removeEventListener("mousedown", handleSearch)
+    }
+  }, [])
+
   return (
-    <div className="stay-search">
-      <button className="anywhere">Anywhere</button>
-      <button className="any-week">Any week</button>
-      <button className="add-guests">Add guests</button>
-      <button className="search-icon-btn">
-        <CgSearch />
-      </button>
+    <div className="stay-search-close">
+      {!staySearchExpanded && (
+        <div className="stay-search">
+          <button
+            onClick={() => setStaySearchExpanded("anywhere")}
+            className="anywhere"
+          >
+            Anywhere
+          </button>
+          <button
+            onClick={() => setStaySearchExpanded("any-week")}
+            className="any-week"
+          >
+            Any week
+          </button>
+          <button
+            onClick={() => setStaySearchExpanded("add-guests")}
+            className="add-guests"
+          >
+            Add guests
+          </button>
+          <button
+            className="search-icon-btn"
+            onClick={() => setStaySearchExpanded("search-icon-btn")}
+          >
+            <FaSearch />
+          </button>
+        </div>
+      )}
+      <div ref={staySearchRef}>
+        {staySearchExpanded && (
+          <StaySearchExpanded staySearchExpanded={staySearchExpanded} />
+        )}
+      </div>
     </div>
   )
 }

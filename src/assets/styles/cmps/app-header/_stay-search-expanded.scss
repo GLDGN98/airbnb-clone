@@ -1,0 +1,38 @@
+.modal-open {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  
+  .stay-search-expanded {
+    background-color: #fff;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-height: 160px;
+    z-index: 5;
+  
+    .category {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 1.25em;
+      min-height: 60px;
+  
+      button {
+        font-family: "Cereal-Book";
+        font-size: 16px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        transition: border-bottom 0.3s;
+        padding-bottom: 0.5em;
+        border-bottom: 2px solid transparent;
+  
+        &:hover {
+          border-bottom-color: #b0b0b0;
+          opacity: 0.687;
+        }
+      }
+    }
+  }
+  
