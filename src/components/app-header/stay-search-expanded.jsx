@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react"
+import { FaSearch } from "react-icons/fa"
 
 export const StaySearchExpanded = ({ staySearchExpanded }) => {
   useEffect(() => {
@@ -26,7 +27,35 @@ export const StaySearchExpanded = ({ staySearchExpanded }) => {
         <button>Experiences</button>
         <button>Online Experiences</button>
       </div>
-      <div className="stay-search-settings"></div>
+      <div className="stay-settings">
+        <label className="where">
+          Where
+          <input type="text" className="search-dest" placeholder="Search destinations" />
+        </label>
+        <div className="dates">
+          <div className="check-in">
+            Check in
+            <span>Add dates</span>
+          </div>
+          <div className="check-out">
+            Check out
+            <span>Add dates</span>
+          </div>
+        </div>
+        <div className="who-search">
+          <div className="who">
+            Who
+            <span>Add guests</span>
+          </div>
+
+          <div className="stay-search-setting">
+            <span className="search-icon">
+              <FaSearch />
+              {/* Search */}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

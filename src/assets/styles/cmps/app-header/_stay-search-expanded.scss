@@ -17,6 +17,7 @@
     justify-content: center;
     gap: 1.25em;
     min-height: 60px;
+    margin-bottom: 1.3em;
 
     button {
       font-family: "Cereal-Book";
@@ -36,29 +37,23 @@
   }
 
   .stay-settings {
-    width: -moz-fit-content;
-    width: fit-content;
-    margin: auto;
-    padding: 0.5em;
-    border-radius: 3em;
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     align-items: center;
-    /* gap: 2.5em; */
     border: 1px solid #DDDDDD;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    place-content: center;
-    align-items: center;
-    justify-items: center;
-    margin-top: 1em;
-
+    width: fit-content;
+    margin: auto;
+    border-radius: 2em;
+    position: relative;
 
     .who-search {
       display: flex;
-      gap: 14em;
       align-items: center;
+
+      &:hover {
+        background-color: #DDDDDD;
+        border-radius: 6em;
+      }
 
       .search-icon {
         display: flex;
@@ -70,12 +65,74 @@
         border-radius: 2em;
         opacity: 1;
         font-size: 16px;
+        position: relative;
+        left: -20%;
 
       }
     }
 
-    div,
+    .who {
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+      width: 210px;
+      padding: 1.3em;
+      position: relative;
+      gap: 2px;
+
+
+      ::before {
+        content: '';
+        width: 1px;
+        height: 30px;
+        background: #DDDDDD;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 25%;
+      }
+
+
+    }
+
     .where {
+      display: flex;
+      flex-direction: column;
+      padding: 1.3em 3em;
+      width: -moz-fit-content;
+      width: 100%;
+      font-family: Cereal-Bold;
+      font-size: 12px;
+      gap: 2px;
+
+
+      &:hover {
+        background-color: #DDDDDD;
+        border-radius: 6em;
+
+        input {
+          background-color: #DDDDDD;
+          border-radius: 6em;
+        }
+      }
+
+      span {
+        font-family: Cereal-Book;
+        font-size: 14px;
+        opacity: 0.675;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        font-family: Cereal-Book;
+        font-size: 14px;
+        padding: 0;
+
+      }
+    }
+
+    div {
       font-family: Cereal-Bold;
       font-size: 12px;
 
@@ -86,47 +143,71 @@
       }
     }
 
-    .where,
-    .who {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .who {
-      padding-left: 1em;
-    }
-
-    .where {
-      padding-right: 9em;
-      padding-left: 2em;
-
-      input {
-        border: none;
-        outline: none;
-        font-family: Cereal-Book;
-        font-size: 14px;
-
-
-      }
-    }
-
-    .where,
-    .dates div {
-      border-right: 1px solid #DDDDDD;
-
-    }
-
     .dates {
       display: flex;
-      gap: 0.5em;
 
-      div {
+      .check-in {
+        display: flex;
+        gap: 2px;
+
+        flex-direction: column;
+        padding: 1.3em 3em;
+        white-space: nowrap;
+        // border-right: 1px solid #DDDDDD;
+        position: relative;
+
+        &:hover {
+          ::after {
+            display: none;
+          }
+        }
+
+        ::after {
+          content: '';
+          width: 1px;
+          height: 30px;
+          background: #DDDDDD;
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 25%;
+        }
+
+        &:hover {
+          background-color: #DDDDDD;
+          border-radius: 6em;
+        }
+      }
+
+      .check-out {
         display: flex;
         flex-direction: column;
-        padding: 0 3em;
-        align-items: flex-start;
+        gap: 2px;
+        padding: 1.3em 3em;
+        white-space: nowrap;
+        position: relative;
 
+        &:hover {
+          ::after {
+            display: none;
+          }
+        }
 
+        ::after {
+          content: '';
+          width: 1px;
+          height: 30px;
+          background: #DDDDDD;
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 25%;
+        }
+
+        &:hover {
+          background-color: #DDDDDD;
+          border-radius: 6em;
+        }
       }
     }
   }
