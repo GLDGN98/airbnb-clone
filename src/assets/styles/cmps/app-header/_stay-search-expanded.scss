@@ -1,38 +1,133 @@
 .modal-open {
-    background-color: rgba(0, 0, 0, 0.25);
-  }
-  
-  .stay-search-expanded {
-    background-color: #fff;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    min-height: 160px;
-    z-index: 5;
-  
-    .category {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 1.25em;
-      min-height: 60px;
-  
-      button {
-        font-family: "Cereal-Book";
-        font-size: 16px;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        transition: border-bottom 0.3s;
-        padding-bottom: 0.5em;
-        border-bottom: 2px solid transparent;
-  
-        &:hover {
-          border-bottom-color: #b0b0b0;
-          opacity: 0.687;
-        }
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.stay-search-expanded {
+  background-color: #fff;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-height: 160px;
+  z-index: 5;
+
+  .category {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.25em;
+    min-height: 60px;
+
+    button {
+      font-family: "Cereal-Book";
+      font-size: 16px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      transition: border-bottom 0.3s;
+      padding-bottom: 0.5em;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        border-bottom-color: #b0b0b0;
+        opacity: 0.687;
       }
     }
   }
-  
+
+  .stay-settings {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: auto;
+    padding: 0.5em;
+    border-radius: 3em;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    /* gap: 2.5em; */
+    border: 1px solid #DDDDDD;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-content: center;
+    align-items: center;
+    justify-items: center;
+    margin-top: 1em;
+
+
+    .who-search {
+      display: flex;
+      gap: 14em;
+      align-items: center;
+
+      .search-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #FF385C;
+        color: white;
+        padding: 1em;
+        border-radius: 2em;
+        opacity: 1;
+        font-size: 16px;
+
+      }
+    }
+
+    div,
+    .where {
+      font-family: Cereal-Bold;
+      font-size: 12px;
+
+      span {
+        font-family: Cereal-Book;
+        font-size: 14px;
+        opacity: 0.675;
+      }
+    }
+
+    .where,
+    .who {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .who {
+      padding-left: 1em;
+    }
+
+    .where {
+      padding-right: 9em;
+      padding-left: 2em;
+
+      input {
+        border: none;
+        outline: none;
+        font-family: Cereal-Book;
+        font-size: 14px;
+
+
+      }
+    }
+
+    .where,
+    .dates div {
+      border-right: 1px solid #DDDDDD;
+
+    }
+
+    .dates {
+      display: flex;
+      gap: 0.5em;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        padding: 0 3em;
+        align-items: flex-start;
+
+
+      }
+    }
+  }
+}
