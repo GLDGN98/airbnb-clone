@@ -1,0 +1,42 @@
+.search-module {
+    position: absolute;
+    width: 500px;
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+    margin-top: 12px;
+    padding: 32px;
+    left: 29.3%;
+
+    h4 {
+        margin: 0 0 28px 5px;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 18px;
+    }
+
+
+    .regions {
+        display: grid;
+        grid-template-columns: repeat(3, 130px);
+        row-gap: 24px;
+        column-gap: 5px;
+        place-content: center;
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    img {
+        width: 125px;
+        border-color: #DDDDDD;
+        display: inline-block !important;
+        cursor: pointer !important;
+        text-align: center !important;
+        border-width: 1px !important;
+        border-style: solid !important;
+        border-image: initial !important;
+        border-radius: 12px;
+    }
+}

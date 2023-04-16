@@ -1,18 +1,17 @@
-import React, { useEffect, useRef } from "react"
-import { FaSearch } from "react-icons/fa"
+import React, { useState } from "react"
+import { DynamicModal } from "./dynamic-modal"
+import { TbSearch } from "react-icons/tb"
 
 export const StaySearchExpanded = ({ staySearchExpanded }) => {
-  useEffect(() => {
-    if (staySearchExpanded) {
-      document.body.classList.add("modal-open")
-    } else {
-      document.body.classList.remove("modal-open")
-    }
+  const [clickedButton, setClickedButton] = useState(null)
 
-    return () => {
-      document.body.classList.remove("modal-open")
-    }
-  }, [staySearchExpanded])
+  const handleButtonClick = (index) => {
+    setClickedButton(index)
+  }
+
+  const closeModal = () => {
+    setClickedButton(null)
+  }
 
   return (
     <div
@@ -23,26 +22,68 @@ export const StaySearchExpanded = ({ staySearchExpanded }) => {
       }
     >
       <div className="category">
-        <button>Stays</button>
-        <button>Experiences</button>
-        <button>Online Experiences</button>
+        <button
+          className={clickedButton === 0 ? "active" : ""}
+          onClick={() => handleButtonClick(0)}
+        >
+          Stays
+        </button>
+        <button
+          className={clickedButton === 1 ? "active" : ""}
+          onClick={() => handleButtonClick(1)}
+        >
+          Experiences
+        </button>
+        <button
+          className={clickedButton === 2 ? "active" : ""}
+          onClick={() => handleButtonClick(2)}
+        >
+          Online Experiences
+        </button>
       </div>
-      <div className="stay-settings">
-        <label className="where">
-          Where
-          <input type="text" className="search-dest" placeholder="Search destinations" />
-        </label>
+      <div
+        style={{ backgroundColor: clickedButton ? "#EBEBEB" : "#FFFFFF" }}
+        className="stay-settings"
+      >
+        <div
+          className={`where-settings ${
+            clickedButton === "where" ? "active" : ""
+          }`}
+        >
+          <label onClick={() => handleButtonClick("where")} className="where">
+            Where
+            <input
+              style={{ backgroundColor: "inherit" }}
+              type="text"
+              className="search-dest"
+              placeholder="Search destinations"
+            />
+          </label>
+        </div>
         <div className="dates">
-          <div className="check-in">
+          <div
+            className={`check-in ${
+              clickedButton === "check-in" ? "active" : ""
+            }`}
+            onClick={() => handleButtonClick("check-in")}
+          >
             Check in
             <span>Add dates</span>
           </div>
-          <div className="check-out">
+          <div
+            className={`check-out ${
+              clickedButton === "check-out" ? "active" : ""
+            }`}
+            onClick={() => handleButtonClick("check-out")}
+          >
             Check out
             <span>Add dates</span>
           </div>
         </div>
-        <div className="who-search">
+        <div
+          className={`who-search ${clickedButton === "who" ? "active" : ""}`}
+          onClick={() => handleButtonClick("who")}
+        >
           <div className="who">
             Who
             <span>Add guests</span>
@@ -50,12 +91,14 @@ export const StaySearchExpanded = ({ staySearchExpanded }) => {
 
           <div className="stay-search-setting">
             <span className="search-icon">
-              <FaSearch />
-              {/* Search */}
+              <TbSearch />
             </span>
           </div>
         </div>
       </div>
+      {clickedButton && (
+        <DynamicModal input={clickedButton} closeModal={closeModal} />
+      )}
     </div>
   )
 }

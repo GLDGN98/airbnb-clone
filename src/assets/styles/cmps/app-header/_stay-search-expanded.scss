@@ -25,16 +25,50 @@
       border: none;
       background-color: transparent;
       cursor: pointer;
-      transition: border-bottom 0.3s;
       padding-bottom: 0.5em;
-      border-bottom: 2px solid transparent;
+      position: relative;
 
       &:hover {
         border-bottom-color: #b0b0b0;
-        opacity: 0.687;
+        opacity: 0.5;
+
+        &.active {
+          opacity: 1;
+        }
+
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        transition: width 0.3s;
+        background-color: black;
+      }
+
+      &::before {
+        left: 50%;
+      }
+
+      &::after {
+        right: 50%;
+      }
+
+      &:hover::before,
+      &:hover::after {
+        width: 50%;
+      }
+
+      &.active::before,
+      &.active::after {
+        width: 50%;
       }
     }
   }
+
 
   .stay-settings {
     display: flex;
@@ -46,9 +80,31 @@
     border-radius: 2em;
     position: relative;
 
+    .where-settings {
+
+
+      &.active {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        border-radius: inherit;
+        background-clip: padding-box;
+        background: #fff;
+      }
+
+    }
+
+
     .who-search {
       display: flex;
       align-items: center;
+      cursor: pointer;
+
+      &.active {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 4em;
+        background-clip: padding-box;
+        background: #fff;
+
+      }
 
       &:hover {
         background-color: #DDDDDD;
@@ -61,12 +117,14 @@
         justify-content: center;
         background: #FF385C;
         color: white;
-        padding: 1em;
+        padding: 0.75em;
         border-radius: 2em;
         opacity: 1;
-        font-size: 16px;
+        font-size: 20px;
         position: relative;
         left: -20%;
+
+
 
       }
     }
@@ -79,6 +137,8 @@
       padding: 1.3em;
       position: relative;
       gap: 2px;
+
+
 
 
       ::before {
@@ -104,6 +164,11 @@
       font-family: Cereal-Bold;
       font-size: 12px;
       gap: 2px;
+      cursor: pointer;
+      width: 325px;
+
+
+
 
 
       &:hover {
@@ -149,12 +214,22 @@
       .check-in {
         display: flex;
         gap: 2px;
+        cursor: pointer;
+
 
         flex-direction: column;
-        padding: 1.3em 3em;
+        padding: 1.3em 2.5em;
         white-space: nowrap;
         // border-right: 1px solid #DDDDDD;
         position: relative;
+
+        &.active {
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+          border-radius: 4em;
+          background-clip: padding-box;
+          background: #fff;
+
+        }
 
         &:hover {
           ::after {
@@ -183,9 +258,21 @@
         display: flex;
         flex-direction: column;
         gap: 2px;
-        padding: 1.3em 3em;
+        padding: 1.3em 2.5em;
         white-space: nowrap;
         position: relative;
+        cursor: pointer;
+
+
+        &.active {
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+          border-radius: 4em;
+          background-clip: padding-box;
+          background: #fff;
+
+        }
+
+
 
         &:hover {
           ::after {

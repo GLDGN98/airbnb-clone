@@ -5,6 +5,7 @@ import filterNames from "../data/filter-names.json"
 import destinations from "../data/destinations.json"
 
 import originalStays from "../data/stays.json"
+import destination from "../data/destinations.json"
 
 const STORAGE_KEY = "staysDB"
 
@@ -21,6 +22,8 @@ export const stayService = {
   getStays,
   getFilters,
   getEmptyFilterBy,
+  getDestination,
+  getContinentImages,
 }
 window.cs = stayService
 
@@ -29,6 +32,10 @@ async function query() {
   return stays
 
   // return httpService.get(STORAGE_KEY, filterBy)
+}
+
+function getDestination() {
+  return destination
 }
 
 function getStayRating(stay) {
@@ -152,6 +159,18 @@ function generateRandomDateRange() {
   const endDate = new Date(startDate)
   endDate.setDate(endDate.getDate() + numDays - 1) // Set end date based on start date and number of days
   return [startDate, endDate]
+}
+
+function getContinentImages() {
+  const continentImages = {
+    all: require("../assets/img/regions/all.webp"),
+    france: require("../assets/img/regions/france.webp"),
+    italy: require("../assets/img/regions/italy.webp"),
+    middleEast: require("../assets/img/regions/middle-east.webp"),
+    southAmerica: require("../assets/img/regions/south-america.webp"),
+    usa: require("../assets/img/regions/usa.webp"),
+  }
+  return continentImages
 }
 
 function _createStays() {
