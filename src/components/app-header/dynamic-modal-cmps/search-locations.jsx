@@ -6,7 +6,7 @@ import regionImgFR from "../../../assets/img/regions/france.webp"
 import regionImgSA from "../../../assets/img/regions/south-america.webp"
 import regionImgUSA from "../../../assets/img/regions/usa.webp"
 
-export const SearchLocations = () => {
+export const SearchLocations = ({ buttonCoords }) => {
   const regions = [
     { label: "i'm flexible", img: regionImgAll },
     { label: "middle east", img: regionImgME },
@@ -16,7 +16,7 @@ export const SearchLocations = () => {
     { label: "united states", img: regionImgUSA },
   ]
   return (
-    <section className="search-module search-location">
+    <section style={buttonCoords} className="search-module search-location">
       <h4 className="title">Search by region</h4>
       <div className="wrapper">
         <ul className="regions">

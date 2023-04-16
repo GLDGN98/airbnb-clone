@@ -1,6 +1,6 @@
 import { SearchLocations } from "./dynamic-modal-cmps/search-locations"
 
-export const DynamicModal = ({ input, closeModal }) => {
+export const DynamicModal = ({ input, buttonCoords, closeModal }) => {
   if (input === "check-in") {
     return (
       <div className="modal">
@@ -23,7 +23,7 @@ export const DynamicModal = ({ input, closeModal }) => {
       </div>
     )
   } else if (input === "where") {
-    return <SearchLocations />
+    return <SearchLocations buttonCoords={buttonCoords} />
   } else {
     return null
   }

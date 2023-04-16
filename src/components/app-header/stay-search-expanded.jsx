@@ -1,12 +1,19 @@
 import React, { useState } from "react"
 import { DynamicModal } from "./dynamic-modal"
-import { TbSearch } from "react-icons/tb"
+import { Category } from "./category"
+import { StaySettings } from "./stay-settings"
 
 export const StaySearchExpanded = ({ staySearchExpanded }) => {
   const [clickedButton, setClickedButton] = useState(null)
+  const [buttonCoords, setButtonCoords] = useState(null)
 
-  const handleButtonClick = (index) => {
+  const handleButtonClick = (index, e) => {
     setClickedButton(index)
+    const buttonRect = e.target.getBoundingClientRect()
+    setButtonCoords({
+      left: buttonRect.left + window.scrollX - 35,
+      top: buttonRect.top + window.scrollY + 30,
+    })
   }
 
   const closeModal = () => {
@@ -21,83 +28,20 @@ export const StaySearchExpanded = ({ staySearchExpanded }) => {
           : "stay-search-expanded"
       }
     >
-      <div className="category">
-        <button
-          className={clickedButton === 0 ? "active" : ""}
-          onClick={() => handleButtonClick(0)}
-        >
-          Stays
-        </button>
-        <button
-          className={clickedButton === 1 ? "active" : ""}
-          onClick={() => handleButtonClick(1)}
-        >
-          Experiences
-        </button>
-        <button
-          className={clickedButton === 2 ? "active" : ""}
-          onClick={() => handleButtonClick(2)}
-        >
-          Online Experiences
-        </button>
-      </div>
-      <div
-        style={{ backgroundColor: clickedButton ? "#EBEBEB" : "#FFFFFF" }}
-        className="stay-settings"
-      >
-        <div
-          className={`where-settings ${
-            clickedButton === "where" ? "active" : ""
-          }`}
-        >
-          <label onClick={() => handleButtonClick("where")} className="where">
-            Where
-            <input
-              style={{ backgroundColor: "inherit" }}
-              type="text"
-              className="search-dest"
-              placeholder="Search destinations"
-            />
-          </label>
-        </div>
-        <div className="dates">
-          <div
-            className={`check-in ${
-              clickedButton === "check-in" ? "active" : ""
-            }`}
-            onClick={() => handleButtonClick("check-in")}
-          >
-            Check in
-            <span>Add dates</span>
-          </div>
-          <div
-            className={`check-out ${
-              clickedButton === "check-out" ? "active" : ""
-            }`}
-            onClick={() => handleButtonClick("check-out")}
-          >
-            Check out
-            <span>Add dates</span>
-          </div>
-        </div>
-        <div
-          className={`who-search ${clickedButton === "who" ? "active" : ""}`}
-          onClick={() => handleButtonClick("who")}
-        >
-          <div className="who">
-            Who
-            <span>Add guests</span>
-          </div>
-
-          <div className="stay-search-setting">
-            <span className="search-icon">
-              <TbSearch />
-            </span>
-          </div>
-        </div>
-      </div>
+      <Category
+        clickedButton={clickedButton}
+        handleButtonClick={handleButtonClick}
+      />
+      <StaySettings
+        clickedButton={clickedButton}
+        handleButtonClick={handleButtonClick}
+      />
       {clickedButton && (
-        <DynamicModal input={clickedButton} closeModal={closeModal} />
+        <DynamicModal
+          input={clickedButton}
+          buttonCoords={buttonCoords}
+          closeModal={closeModal}
+        />
       )}
     </div>
   )
