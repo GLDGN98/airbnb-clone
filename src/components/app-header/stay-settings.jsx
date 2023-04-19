@@ -1,7 +1,11 @@
 import React from "react"
 import { TbSearch } from "react-icons/tb"
 
-export const StaySettings = ({ clickedButton, handleButtonClick }) => {
+export const StaySettings = ({
+  clickedButton,
+  handleButtonClick,
+  staySettings,
+}) => {
   return (
     <div
       style={{ backgroundColor: clickedButton ? "#EBEBEB" : "#FFFFFF" }}
@@ -16,6 +20,7 @@ export const StaySettings = ({ clickedButton, handleButtonClick }) => {
         <label className="where">
           Where
           <input
+            value={staySettings?.origin}
             style={{ backgroundColor: "inherit" }}
             type="text"
             className="search-dest"

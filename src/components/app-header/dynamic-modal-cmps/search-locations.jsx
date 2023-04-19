@@ -6,7 +6,7 @@ import regionImgFR from "../../../assets/img/regions/france.webp"
 import regionImgSA from "../../../assets/img/regions/south-america.webp"
 import regionImgUSA from "../../../assets/img/regions/usa.webp"
 
-export const SearchLocations = ({ buttonCoords }) => {
+export const SearchLocations = ({ buttonCoords, onSelectRegion }) => {
   const regions = [
     { label: "i'm flexible", img: regionImgAll },
     { label: "middle east", img: regionImgME },
@@ -25,7 +25,7 @@ export const SearchLocations = ({ buttonCoords }) => {
               <div
                 key={r.label}
                 className="region"
-                // onClick={() => onSelectRegion(r.label)}
+                onClick={() => onSelectRegion(r.label)}
               >
                 <img
                   src={r.img}

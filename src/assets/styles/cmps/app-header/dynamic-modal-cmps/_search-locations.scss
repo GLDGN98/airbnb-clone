@@ -1,11 +1,16 @@
 .search-module {
     position: absolute;
-    width: 500px;
+    width: fit-content;
     background: white;
     border-radius: 32px;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
     margin-top: 12px;
     padding: 32px;
+
+
+    &.search-date-picker {
+   
+    }
 
     h4 {
         margin: 0 0 28px 5px;
