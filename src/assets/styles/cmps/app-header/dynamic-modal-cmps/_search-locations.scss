@@ -8,39 +8,52 @@
     padding: 32px;
 
 
-    &.search-date-picker {
-   
-    }
-
-    h4 {
-        margin: 0 0 28px 5px;
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 18px;
-    }
 
 
-    .regions {
-        display: grid;
-        grid-template-columns: repeat(3, 130px);
-        row-gap: 24px;
-        column-gap: 5px;
-        place-content: center;
+    &.search-location {
+        position: absolute;
 
-        p {
+        left: 29.5%;
+        top: 92%;
+
+        h4 {
+            margin: 0 0 28px 5px;
             font-size: 14px;
+            font-weight: 700;
+            line-height: 18px;
+        }
+
+
+        .regions {
+            display: grid;
+            grid-template-columns: repeat(3, 130px);
+            row-gap: 24px;
+            column-gap: 5px;
+            place-content: center;
+
+            p {
+                font-size: 14px;
+            }
+
+            img {
+                &:hover {
+                    border: 1px solid black;
+                }
+            }
+        }
+
+        img {
+            width: 125px;
+            border-color: #DDDDDD;
+            display: inline-block !important;
+            cursor: pointer !important;
+            text-align: center !important;
+            border-width: 1px !important;
+            border-style: solid !important;
+            border-image: initial !important;
+            border-radius: 12px;
         }
     }
 
-    img {
-        width: 125px;
-        border-color: #DDDDDD;
-        display: inline-block !important;
-        cursor: pointer !important;
-        text-align: center !important;
-        border-width: 1px !important;
-        border-style: solid !important;
-        border-image: initial !important;
-        border-radius: 12px;
-    }
+
 }

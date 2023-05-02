@@ -4,11 +4,16 @@ import { StaySearchExpanded } from "./stay-search-expanded"
 
 export const StaySearch = () => {
   const [staySearchExpanded, setStaySearchExpanded] = useState(false)
+
   const staySearchRef = useRef()
 
   useEffect(() => {
     let handleSearch = (e) => {
-      if (!staySearchRef.current.contains(e.target)) {
+      if (
+        staySearchRef.current &&
+        !staySearchRef.current.contains(e.target) &&
+        !staySearchRef.current.parentNode.contains(e.target)
+      ) {
         setStaySearchExpanded(false)
       }
     }
@@ -50,11 +55,20 @@ export const StaySearch = () => {
           </button>
         </div>
       )}
-      <div ref={staySearchRef}>
-        {staySearchExpanded && (
-          <StaySearchExpanded staySearchExpanded={staySearchExpanded} />
-        )}
-      </div>
+      {staySearchExpanded && (
+        <>
+          <div
+            className="modal-overlay"
+            onClick={() => setStaySearchExpanded(false)}
+          ></div>
+          <div className="modal-container">
+            <StaySearchExpanded
+              staySearchExpanded={staySearchExpanded}
+              setStaySearchExpanded={setStaySearchExpanded}
+            />
+          </div>
+        </>
+      )}
     </div>
   )
 }

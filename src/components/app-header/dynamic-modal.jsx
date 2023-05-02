@@ -1,30 +1,46 @@
 import { SearchDatePicker } from "./dynamic-modal-cmps/search-date-picker"
 import { SearchLocations } from "./dynamic-modal-cmps/search-locations"
+import { SearchWho } from "./dynamic-modal-cmps/search-who"
 
 export const DynamicModal = ({
   input,
   buttonCoords,
-  closeModal,
   onSelectRegion,
+  handleButtonClick,
+  onSelectDate,
+  staySettings,
+  updateCategoryAmount,
 }) => {
   if (input === "check-in") {
-    return <SearchDatePicker buttonCoords={buttonCoords} />
-  } else if (input === "check-out") {
-    return <SearchDatePicker buttonCoords={buttonCoords} />
-  } else if (input === "who") {
     return (
-      <div className="modal">
-        <h1>Who Modal</h1>
-        <button onClick={closeModal}>Close</button>
-      </div>
+      <SearchDatePicker
+        onSelectDate={onSelectDate}
+        staySettings={staySettings}
+        buttonCoords={buttonCoords}
+        handleButtonClick={handleButtonClick}
+        input={input}
+      />
     )
-  } else if (input === "where") {
+  } else if (input === "check-out") {
     return (
-      <SearchLocations
-        onSelectRegion={onSelectRegion}
+      <SearchDatePicker
+        input={input}
+        staySettings={staySettings}
+        onSelectDate={onSelectDate}
+        handleButtonClick={handleButtonClick}
         buttonCoords={buttonCoords}
       />
     )
+  } else if (input === "who") {
+    return (
+      <SearchWho
+      updateCategoryAmount={updateCategoryAmount}
+        staySettings={staySettings}
+        buttonCoords={buttonCoords}
+      />
+    )
+  } else if (input === "where") {
+    return <SearchLocations onSelectRegion={onSelectRegion} />
   } else {
     return null
   }

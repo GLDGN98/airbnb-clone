@@ -11,6 +11,8 @@
   min-height: 160px;
   z-index: 5;
 
+
+
   .category {
     display: flex;
     align-items: flex-end;
@@ -80,6 +82,8 @@
     position: relative;
 
     .where-settings {
+      position: relative;
+
       &.active {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         border-radius: inherit;
@@ -94,7 +98,12 @@
       display: flex;
       align-items: center;
       cursor: pointer;
-      margin: -1.5px;
+      margin: -1px;
+
+      &:hover {
+        background-color: #DDDDDD;
+        border-radius: 6em;
+      }
 
       &.active {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
@@ -103,10 +112,10 @@
         background: #fff;
       }
 
-      &:hover {
-        background-color: #DDDDDD;
-        border-radius: 6em;
-      }
+      // &:hover {
+      //   background-color: #DDDDDD;
+      //   border-radius: 6em;
+      // }
 
       .search-icon {
         display: flex;
@@ -129,8 +138,11 @@
       white-space: nowrap;
       width: 210px;
       padding: 1.3em;
+      padding-left: 2em;
       position: relative;
       gap: 2px;
+
+
 
       ::before {
         content: '';
@@ -157,15 +169,30 @@
       width: 325px;
       margin: -1.5px;
 
+
+
       &:hover {
         background-color: #DDDDDD;
         border-radius: 6em;
 
-        input {
-          background-color: #DDDDDD;
-          border-radius: 6em;
-        }
+
+
+        // input {
+        //   background-color: #DDDDDD;
+        //   border-radius: 6em;
+        // }
       }
+
+      &.active {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 4em;
+        background-clip: padding-box;
+        background: #fff;
+
+
+      }
+
+
 
       span {
         font-family: Cereal-Book;
@@ -206,13 +233,7 @@
         white-space: nowrap;
         position: relative;
 
-        &.active {
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-          border-radius: 4em;
-          background-clip: padding-box;
-          background: #fff;
 
-        }
 
         &:hover {
           ::after {
@@ -234,6 +255,14 @@
         &:hover {
           background-color: #DDDDDD;
           border-radius: 6em;
+        }
+
+        &.active {
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+          border-radius: 4em;
+          background-clip: padding-box;
+          background: #fff;
+
         }
       }
 
@@ -246,12 +275,6 @@
         position: relative;
         cursor: pointer;
 
-        &.active {
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-          border-radius: 4em;
-          background-clip: padding-box;
-          background: #fff;
-        }
 
         &:hover {
           ::after {
@@ -274,7 +297,30 @@
           background-color: #DDDDDD;
           border-radius: 6em;
         }
+
+        &.active {
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+          border-radius: 4em;
+          background-clip: padding-box;
+          background: #fff;
+        }
+
       }
+    }
+
+    .stay-search-settings {
+
+      .search-icon {
+background: #FF385C;
+
+        p {
+          font-size: 15px;
+          font-family: Cereal-Medium;
+          letter-spacing: 0.02em;
+          padding-left: 0.35em;
+        }
+      }
+
     }
   }
 }

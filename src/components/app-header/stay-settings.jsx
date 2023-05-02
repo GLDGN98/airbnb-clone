@@ -5,6 +5,7 @@ export const StaySettings = ({
   clickedButton,
   handleButtonClick,
   staySettings,
+  handleSearch
 }) => {
   return (
     <div
@@ -17,9 +18,10 @@ export const StaySettings = ({
           clickedButton === "where" ? "active" : ""
         }`}
       >
-        <label className="where">
+        <label className={`where ${clickedButton === "where" ? "active" : ""}`}>
           Where
           <input
+            readOnly
             value={staySettings?.origin}
             style={{ backgroundColor: "inherit" }}
             type="text"
@@ -34,7 +36,11 @@ export const StaySettings = ({
           onClick={(e) => handleButtonClick("check-in", e)}
         >
           Check in
-          <span>Add dates</span>
+          {staySettings.startDate ? (
+            <span>{staySettings.startDate}</span>
+          ) : (
+            <span>Add dates</span>
+          )}
         </div>
         <div
           className={`check-out ${
@@ -43,22 +49,33 @@ export const StaySettings = ({
           onClick={(e) => handleButtonClick("check-out", e)}
         >
           Check out
-          <span>Add dates</span>
+          {staySettings.endDate ? (
+            <span>{staySettings.endDate}</span>
+          ) : (
+            <span>Add dates</span>
+          )}
         </div>
       </div>
       <div
         className={`who-search ${clickedButton === "who" ? "active" : ""}`}
         onClick={(e) => handleButtonClick("who", e)}
       >
-        <div className="who">
+        <div className={`who ${clickedButton === "who" ? "active" : ""}`}>
           Who
           <span>Add guests</span>
         </div>
 
-        <div className="stay-search-setting">
-          <span className="search-icon">
-            <TbSearch />
-          </span>
+        <div className="stay-search-settings">
+          {clickedButton ? (
+            <span onClick={handleSearch} className="search-icon">
+              <TbSearch />
+              <p>Search</p>
+            </span>
+          ) : (
+            <span className="search-icon">
+              <TbSearch />
+            </span>
+          )}
         </div>
       </div>
     </div>

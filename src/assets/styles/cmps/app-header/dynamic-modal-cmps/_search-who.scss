@@ -1,0 +1,82 @@
+.search-who {
+    position: absolute;
+    background-color: white;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    border-radius: 32px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+    margin-top: 12px;
+    padding: 16px 32px;
+    
+
+
+    .adults-amount,
+    .childrens-amount,
+    .infants-amount {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+
+        span {
+            min-width: 15px;
+    text-align: center;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            opacity: 0.65;
+        }
+    }
+
+    button {
+        border-color: #B0B0B0;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 0;
+        padding: 5px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        border-width: 1px;
+        border-style: solid;
+        background-color: #FFFFFF;
+    }
+
+
+    .adults,
+    .childrens,
+    .infants {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+      
+        span {
+            font-family: Cereal-Medium;
+        }
+
+        p {
+            font-size: 14px;
+            opacity: 0.675;
+        }
+    }
+
+
+    .adults-category,
+    .children-category,
+    .infants-category {
+        padding: 1.5em;
+        border-bottom: 1px solid rgb(235, 235, 235);
+        display: flex;
+        gap: 3em;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+}
